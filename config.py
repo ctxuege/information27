@@ -26,3 +26,26 @@ class Config(object):
     SESSION_PERMANENT = False
     # 设置过期时间
     permanent_session_lifetime = 86400 * 2
+
+
+class DevelopmentConfig(Config):
+    """测试环境配置"""
+    DEBUG = True
+
+
+class ProductionConfig(Config):
+    """生成环境配置"""
+    DEBUG = False
+
+
+class TestingConfig(Config):
+    """单元测试配置"""
+    DEBUG = True
+    TESTING = True
+
+
+config = {
+    "dev": DevelopmentConfig,
+    "prd": ProductionConfig,
+    "test": TestingConfig
+}
