@@ -5,6 +5,8 @@ from flask_wtf import CSRFProtect
 # 可以指定session存储的位置
 from flask_session import Session
 from flask_script import Manager
+from flask_migrate import Migrate,MigrateCommand
+
 
 class Config(object):
     """工程配置信息"""
@@ -46,9 +48,11 @@ CSRFProtect(app)
 # 设置session保存指定位置
 Session(app)
 
-
 manager = Manager(app)
-
+# 将app 与 db 关联
+Migrate(app,db)
+# 将迁移命令添加到manager
+manager.add_command('db',MigrateCommand)
 
 @app.route('/')
 def index():
