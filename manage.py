@@ -4,6 +4,7 @@ from flask_migrate import Migrate,MigrateCommand
 from info import create_app,db
 import logging
 
+# manange.py 是启动程序的入口，只关心启动的相关参数及其内容，不关心如何创建app及相关业务逻辑
 
 # 通过指定的配置名字创建对应配置的app
 app = create_app('dev')
