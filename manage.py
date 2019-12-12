@@ -4,7 +4,7 @@ from redis import StrictRedis
 from flask_wtf import CSRFProtect
 # 可以指定session存储的位置
 from flask_session import Session
-
+from flask_script import Manager
 
 class Config(object):
     """工程配置信息"""
@@ -47,6 +47,9 @@ CSRFProtect(app)
 Session(app)
 
 
+manager = Manager(app)
+
+
 @app.route('/')
 def index():
     session["name"] = "itheima"
@@ -54,4 +57,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    manager.run()
