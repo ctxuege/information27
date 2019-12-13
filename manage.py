@@ -16,13 +16,5 @@ Migrate(app,db)
 manager.add_command('db',MigrateCommand)
 
 
-@app.route('/')
-def index():
-    # session["name"] = "itheima"
-    # 测试打印日志
-    logging.info('start turn in.......')
-    return 'index'
-
-
 if __name__ == '__main__':
     manager.run()
